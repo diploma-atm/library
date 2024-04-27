@@ -1,0 +1,67 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:8080
+  description: Generated server url
+paths:
+  /yandex/integration:
+    post:
+      tags:
+      - yandex-controller
+      operationId: getSpeech
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/YandexRequest'
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: string
+  /yandex/integration/filter-data:
+    get:
+      tags:
+      - yandex-controller
+      operationId: getFilterData
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/FilterDataResponse'
+components:
+  schemas:
+    YandexRequest:
+      type: object
+      properties:
+        text:
+          type: string
+        speaker:
+          type: string
+          enum:
+          - JOHN
+          - MADI
+          - AMIRA
+          - MARINA
+          - ANTON
+    FilterDataResponse:
+      type: object
+      properties:
+        speakers:
+          type: array
+          items:
+            $ref: '#/components/schemas/FilterDataResponseItem'
+    FilterDataResponseItem:
+      type: object
+      properties:
+        lang:
+          type: string
+        speaker:
+          type: string

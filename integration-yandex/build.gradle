@@ -28,14 +28,14 @@ ext {
 
 swaggerSources {
     feign {
-        inputFile = file("nca-node-openapi.yaml")
+        inputFile = file("yandex-openapi.yaml")
         code {
             language = 'spring'
             configFile = file("swagger-config.json")
             wipeOutputDir = false
             outputDir = file("$projectDir")
             components = ['models', 'apis']
-            additionalProperties = ['title': 'nca-node-client']
+            additionalProperties = ['title': 'integration-yandex']
         }
     }
 }
