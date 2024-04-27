@@ -1,0 +1,47 @@
+plugins {
+    id("org.hidetake.swagger.generator") version("2.19.2")
+}
+apply plugin: 'kz.diploma.dependency-management'
+
+version = "${yandexVersion}"
+
+dependencies {
+    api 'org.springframework.boot:spring-boot-starter-web'
+
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign:4.1.1'
+    implementation 'javax.validation:validation-api:2.0.1.Final'
+
+    api 'io.springfox:springfox-swagger2:3.0.0'
+
+    api 'io.swagger.core.v3:swagger-annotations:2.2.8'
+    swaggerCodegen 'org.openapitools:openapi-generator-cli:3.3.4'
+}
+
+jar {
+    enabled = true
+}
+
+
+ext {
+    set('generated', "generated")
+}
+
+swaggerSources {
+    feign {
+        inputFile = file("nca-node-openapi.yaml")
+        code {
+            language = 'spring'
+            configFile = file("swagger-config.json")
+            wipeOutputDir = false
+            outputDir = file("$projectDir")
+            components = ['models', 'apis']
+            additionalProperties = ['title': 'nca-node-client']
+        }
+    }
+}
+
+task install {
+    dependsOn generateSwaggerCodeFeign
+    dependsOn build
+    tasks.findByName('build').mustRunAfter 'generateSwaggerCodeFeign'
+}

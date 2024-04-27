@@ -1,0 +1,85 @@
+plugins {
+	id("nu.studer.jooq") version "8.2.1"
+}
+apply plugin: 'kz.diploma.dependency-management'
+
+jar {
+	enabled = true
+}
+
+bootJar {
+	enabled = false
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+version = "${jooqVersion}"
+
+
+sourceSets {
+	main {
+		java {
+			srcDir 'build/generated-sources'
+		}
+	}
+}
+
+dependencies {
+	jooqGenerator 'org.jooq:jooq-meta-extensions-hibernate:3.18.12'
+	jooqGenerator 'org.jooq:jooq-meta:3.18.12'
+	jooqGenerator 'org.jooq:jooq:3.18.12'
+
+
+	jooqGenerator project(':model')
+	compileOnly project(':model')
+
+	api 'org.springframework.boot:spring-boot-starter-jooq'
+}
+
+jooq {
+	configurations {
+		main {
+			generationTool {
+
+				generator {
+					generate {
+						javadoc = false
+						keys = false
+						records = false
+						sequences = false
+						sequenceFlags = false
+						pojos = true
+						pojosAsJavaRecordClasses = true
+					}
+					database {
+						name = 'org.jooq.meta.extensions.jpa.JPADatabase'
+						properties {
+							property {
+								key = 'packages'
+								value = 'kz.diploma.library.shared.model.entity'
+							}
+							property {
+								key = 'useAttributeConverters'
+								value = true
+							}
+							property {
+								key = 'unqualifiedSchema'
+								value = 'none'
+							}
+
+						}
+					}
+					target {
+						packageName = 'kz.diploma.library.shared.jooq.ddl'
+						directory = 'build/generated-sources'
+					}
+				}
+			}
+		}
+	}
+}
+
