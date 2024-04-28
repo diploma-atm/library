@@ -14,14 +14,14 @@ allprojects {
     ext {
         appName = "Diploma shared libraries"
 
-        jooqVersion             = '1.0.1'
-        modelVersion            = '1.0.1'
-        accessVersion           = '1.0.1'
-        errorHandlingVersion    = '1.0.1'
-        yandexVersion           = '1.0.1'
-        adapterVersion          = '1.0.1'
+        jooqVersion             = '1.0.0'
+        modelVersion            = '1.0.0'
+        accessVersion           = '1.0.0'
+        errorHandlingVersion    = '1.0.0'
+        yandexVersion           = '1.0.0'
+        adapterVersion          = '1.0.0'
 
-        bomVersion              = '1.0.1'
+        bomVersion              = '1.0.0'
     }
 
     repositories {
