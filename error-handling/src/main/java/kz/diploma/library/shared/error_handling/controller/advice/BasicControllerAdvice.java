@@ -1,5 +1,6 @@
 package kz.diploma.library.shared.error_handling.controller.advice;
 
+import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
 import kz.diploma.library.shared.error_handling.exception.IncorrectPinException;
 import kz.diploma.library.shared.error_handling.exception.NegativeBalanceException;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class BasicControllerAdvice {
     @ExceptionHandler({EntityNotFoundException.class})
-    protected ResponseEntity<Object> handleEntityNotFound(Exception e) {
+    protected ResponseEntity<Object> handleEntityNotFound(EntityNotFoundException e) {
         log.warn("Exception: {}", e.getMessage());
 
         ErrorResponse response = new ErrorResponse(HttpStatus.NOT_FOUND.value(), e.getMessage());
@@ -23,7 +24,7 @@ public class BasicControllerAdvice {
     }
 
     @ExceptionHandler({IncorrectPinException.class})
-    protected ResponseEntity<Object> handleIncorrectPin(Exception e) {
+    protected ResponseEntity<Object> handleIncorrectPin(IncorrectPinException e) {
         log.warn("Exception: {}", e.getMessage());
 
         ErrorResponse response = new ErrorResponse(HttpStatus.BAD_REQUEST.value(), e.getMessage());
@@ -31,7 +32,15 @@ public class BasicControllerAdvice {
     }
 
     @ExceptionHandler({NegativeBalanceException.class})
-    protected ResponseEntity<Object> handleNegativeBalance(Exception e) {
+    protected ResponseEntity<Object> handleNegativeBalance(NegativeBalanceException e) {
+        log.warn("Exception: {}", e.getMessage());
+
+        ErrorResponse response = new ErrorResponse(HttpStatus.BAD_REQUEST.value(), e.getMessage());
+        return new ResponseEntity<>(response, new HttpHeaders(), response.statusCode());
+    }
+
+    @ExceptionHandler({EntityExistsException.class})
+    protected ResponseEntity<Object> handleEntityExists(EntityExistsException e) {
         log.warn("Exception: {}", e.getMessage());
 
         ErrorResponse response = new ErrorResponse(HttpStatus.BAD_REQUEST.value(), e.getMessage());

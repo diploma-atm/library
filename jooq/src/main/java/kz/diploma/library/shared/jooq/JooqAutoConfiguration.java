@@ -11,7 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan
 public class JooqAutoConfiguration {
     @Bean
-    public DefaultConfigurationCustomizer configurationCustomiser() {
+    public DefaultConfigurationCustomizer configurationCustomizer() {
         return (DefaultConfiguration c) -> c.settings()
                 .withRenderFormatted(true)
                 .withRenderQuotedNames(

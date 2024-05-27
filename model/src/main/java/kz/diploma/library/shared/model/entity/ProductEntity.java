@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -30,6 +31,9 @@ public class ProductEntity {
 
     @Column(name = "cvv")
     public String cvv;
+
+    @Column(name = "expired_date")
+    public LocalDate expiredDate;
 
     @OneToOne(mappedBy = "product")
     public AccountEntity account;
