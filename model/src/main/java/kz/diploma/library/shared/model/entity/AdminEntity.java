@@ -25,6 +25,9 @@ public class AdminEntity {
     @Column(name = "phone_number")
     public String phoneNumber;
 
+    @Column(name = "password")
+    public String password;
+
     @Column(name = "post")
     public String post;
 

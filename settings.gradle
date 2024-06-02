@@ -22,5 +22,7 @@ include('bom')
 include 'jooq'
 include 'model'
 include 'error-handling'
+include 'auth-access'
 include 'adapter-access'
 include 'integration-yandex'
+include 'security'

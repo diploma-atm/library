@@ -1,0 +1,8 @@
+{
+  "modelPackage": "model",
+  "library": "spring-cloud",
+  "dateLibrary": "java17",
+  "useSpringBoot3": "true",
+  "hideGenerationTimestamp": "true",
+  "apiPackage": "api"
+}

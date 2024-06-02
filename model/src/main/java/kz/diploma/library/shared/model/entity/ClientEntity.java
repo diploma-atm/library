@@ -27,6 +27,9 @@ public class ClientEntity {
     @Column(name = "phone_number", unique = true)
     public String phoneNumber;
 
+    @Column(name = "password")
+    public String password;
+
     @OneToMany(mappedBy = "id")
     public List<ProductEntity> products;
 

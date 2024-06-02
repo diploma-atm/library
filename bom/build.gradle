@@ -10,10 +10,10 @@ dependencies {
         api "org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:${springCloudVersion}"
 
 
+        api "kz.diploma.shared.library:auth-access:${authAccessVersion}"
         api "kz.diploma.shared.library:model:${modelVersion}"
         api "kz.diploma.shared.library:jooq:${jooqVersion}"
         api "kz.diploma.shared.library:error-handling:${errorHandlingVersion}"
-        api "kz.diploma.shared.library:access:${accessVersion}"
         api "kz.diploma.shared.library:integration-yandex:${yandexVersion}"
         api "kz.diploma.shared.library:adapter-access:${adapterVersion}"
 
