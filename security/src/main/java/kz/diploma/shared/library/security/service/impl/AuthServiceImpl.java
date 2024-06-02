@@ -6,17 +6,19 @@ import kz.diploma.auth.access.model.UserInfoDTO;
 import kz.diploma.library.shared.error_handling.exception.AuthException;
 import kz.diploma.shared.library.security.model.Roles;
 import kz.diploma.shared.library.security.service.AuthService;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-@RequiredArgsConstructor
 public class AuthServiceImpl implements AuthService {
-    private final AuthControllerApiClient authControllerApiClient;
+    @Lazy
+    @Autowired
+    private AuthControllerApiClient authControllerApiClient;
 
     @Override
     public Roles checkSession(String token) {
