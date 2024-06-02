@@ -24,19 +24,23 @@ public class AuthServiceImpl implements AuthService {
     public Roles checkSession(String token) {
         log.info("authClient:: checkSession");
 
-        ResponseEntity<UserInfoDTO> response = authControllerApiClient.checkSession(new CheckSessionRequest().token(token));
+        try {
+            ResponseEntity<UserInfoDTO> response = authControllerApiClient.checkSession(new CheckSessionRequest().token(token));
 
-        if(response.getStatusCode().equals(HttpStatus.NOT_FOUND) || response.getStatusCode().equals(HttpStatus.UNAUTHORIZED)){
+            if(response.getStatusCode().equals(HttpStatus.NOT_FOUND) || response.getStatusCode().equals(HttpStatus.UNAUTHORIZED)){
+                throw new AuthException("Session is expired for token: %s".formatted(token), 401);
+            }
+            log.info("response:: checkSession  {}", response.getBody());
+
+            var body = response.getBody();
+            if(body == null){
+                throw new IllegalArgumentException();
+            }
+            String role = body.getRole().toString();
+
+            return Roles.valueOf(role);
+        } catch (Exception e){
             throw new AuthException("Session is expired for token: %s".formatted(token), 401);
         }
-        log.info("response:: checkSession  {}", response.getBody());
-
-        var body = response.getBody();
-        if(body == null){
-            throw new IllegalArgumentException();
-        }
-        String role = body.getRole().toString();
-
-        return Roles.valueOf(role);
     }
 }
