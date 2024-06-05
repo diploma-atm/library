@@ -15,5 +15,6 @@ public class InputAuthParams {
     private String token;
     private boolean isValid;
     private boolean hasAccess;
+    private boolean publicAccess;
     private Roles role;
 }

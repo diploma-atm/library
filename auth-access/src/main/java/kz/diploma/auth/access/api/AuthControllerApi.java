@@ -6,10 +6,7 @@
 package kz.diploma.auth.access.api;
 
 import io.swagger.annotations.*;
-import kz.diploma.auth.access.model.AuthRequest;
-import kz.diploma.auth.access.model.AuthResponseDTO;
-import kz.diploma.auth.access.model.CheckSessionRequest;
-import kz.diploma.auth.access.model.UserInfoDTO;
+import kz.diploma.auth.access.model.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,6 +27,16 @@ public interface AuthControllerApi {
         consumes = "application/json",
         method = RequestMethod.POST)
     ResponseEntity<AuthResponseDTO> authenticate(@ApiParam(value = "" ,required=true )  @Valid @RequestBody AuthRequest authRequest);
+
+
+    @ApiOperation(value = "", nickname = "checkPin", notes = "", response = AuthResponseDTO.class, tags={ "auth-controller", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = AuthResponseDTO.class) })
+    @RequestMapping(value = "/check-pin",
+        produces = "*/*", 
+        consumes = "application/json",
+        method = RequestMethod.POST)
+    ResponseEntity<AuthResponseDTO> checkPin(@ApiParam(value = "" ,required=true )  @Valid @RequestBody PinRequest pinRequest);
 
 
     @ApiOperation(value = "", nickname = "checkSession", notes = "", response = UserInfoDTO.class, tags={ "auth-controller", })

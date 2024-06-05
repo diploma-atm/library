@@ -34,7 +34,7 @@ public class AuthServiceImpl implements AuthService {
 
             var body = response.getBody();
             if(body == null){
-                throw new IllegalArgumentException();
+                throw new AuthException("Null exception", 404);
             }
             String role = body.getRole().toString();
 

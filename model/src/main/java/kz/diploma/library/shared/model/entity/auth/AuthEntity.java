@@ -21,8 +21,8 @@ public class AuthEntity {
     @Column(name = "terminated_date")
     public LocalDateTime terminatedDate;
 
-    @Column(name = "phone_number")
-    public String phoneNumber;
+    @Column(name = "login")
+    public String login;
 
     @Column(name = "api_key")
     public String apiKey;

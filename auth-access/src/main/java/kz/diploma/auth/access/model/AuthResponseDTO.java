@@ -49,8 +49,8 @@ public class AuthResponseDTO   {
   @JsonProperty("fio")
   private String fio;
 
-  @JsonProperty("phoneNumber")
-  private String phoneNumber;
+  @JsonProperty("login")
+  private String login;
 
   @JsonProperty("authToken")
   private String authToken;
@@ -95,24 +95,24 @@ public class AuthResponseDTO   {
     this.fio = fio;
   }
 
-  public AuthResponseDTO phoneNumber(String phoneNumber) {
-    this.phoneNumber = phoneNumber;
+  public AuthResponseDTO login(String login) {
+    this.login = login;
     return this;
   }
 
   /**
-   * Get phoneNumber
-   * @return phoneNumber
+   * Get login
+   * @return login
   */
   @ApiModelProperty(value = "")
 
 
-  public String getPhoneNumber() {
-    return phoneNumber;
+  public String getLogin() {
+    return login;
   }
 
-  public void setPhoneNumber(String phoneNumber) {
-    this.phoneNumber = phoneNumber;
+  public void setLogin(String login) {
+    this.login = login;
   }
 
   public AuthResponseDTO authToken(String authToken) {
@@ -147,13 +147,13 @@ public class AuthResponseDTO   {
     AuthResponseDTO authResponseDTO = (AuthResponseDTO) o;
     return Objects.equals(this.role, authResponseDTO.role) &&
         Objects.equals(this.fio, authResponseDTO.fio) &&
-        Objects.equals(this.phoneNumber, authResponseDTO.phoneNumber) &&
+        Objects.equals(this.login, authResponseDTO.login) &&
         Objects.equals(this.authToken, authResponseDTO.authToken);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(role, fio, phoneNumber, authToken);
+    return Objects.hash(role, fio, login, authToken);
   }
 
   @Override
@@ -163,7 +163,7 @@ public class AuthResponseDTO   {
     
     sb.append("    role: ").append(toIndentedString(role)).append("\n");
     sb.append("    fio: ").append(toIndentedString(fio)).append("\n");
-    sb.append("    phoneNumber: ").append(toIndentedString(phoneNumber)).append("\n");
+    sb.append("    login: ").append(toIndentedString(login)).append("\n");
     sb.append("    authToken: ").append(toIndentedString(authToken)).append("\n");
     sb.append("}");
     return sb.toString();
