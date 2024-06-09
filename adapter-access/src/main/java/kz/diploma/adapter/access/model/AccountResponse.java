@@ -15,8 +15,8 @@ public class AccountResponse   {
   @JsonProperty("accountNumber")
   private String accountNumber;
 
-  @JsonProperty("amount")
-  private Integer amount;
+  @JsonProperty("cash")
+  private Integer cash;
 
   public AccountResponse id(Integer id) {
     this.id = id;
@@ -58,24 +58,24 @@ public class AccountResponse   {
     this.accountNumber = accountNumber;
   }
 
-  public AccountResponse amount(Integer amount) {
-    this.amount = amount;
+  public AccountResponse cash(Integer cash) {
+    this.cash = cash;
     return this;
   }
 
   /**
-   * Get amount
-   * @return amount
+   * Get cash
+   * @return cash
   */
   @ApiModelProperty(value = "")
 
 
-  public Integer getAmount() {
-    return amount;
+  public Integer getCash() {
+    return cash;
   }
 
-  public void setAmount(Integer amount) {
-    this.amount = amount;
+  public void setCash(Integer cash) {
+    this.cash = cash;
   }
 
 
@@ -90,12 +90,12 @@ public class AccountResponse   {
     AccountResponse accountResponse = (AccountResponse) o;
     return Objects.equals(this.id, accountResponse.id) &&
         Objects.equals(this.accountNumber, accountResponse.accountNumber) &&
-        Objects.equals(this.amount, accountResponse.amount);
+        Objects.equals(this.cash, accountResponse.cash);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, accountNumber, amount);
+    return Objects.hash(id, accountNumber, cash);
   }
 
   @Override
@@ -105,7 +105,7 @@ public class AccountResponse   {
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    accountNumber: ").append(toIndentedString(accountNumber)).append("\n");
-    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+    sb.append("    cash: ").append(toIndentedString(cash)).append("\n");
     sb.append("}");
     return sb.toString();
   }

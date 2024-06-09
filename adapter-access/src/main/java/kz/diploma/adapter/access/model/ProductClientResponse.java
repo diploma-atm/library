@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * ClientResponse
+ * ProductClientResponse
  */
 
-public class ClientResponse   {
+public class ProductClientResponse   {
   @JsonProperty("id")
   private Integer id;
 
@@ -27,7 +27,7 @@ public class ClientResponse   {
   @JsonProperty("isBlocked")
   private Boolean isBlocked;
 
-  public ClientResponse id(Integer id) {
+  public ProductClientResponse id(Integer id) {
     this.id = id;
     return this;
   }
@@ -47,7 +47,7 @@ public class ClientResponse   {
     this.id = id;
   }
 
-  public ClientResponse surname(String surname) {
+  public ProductClientResponse surname(String surname) {
     this.surname = surname;
     return this;
   }
@@ -67,7 +67,7 @@ public class ClientResponse   {
     this.surname = surname;
   }
 
-  public ClientResponse name(String name) {
+  public ProductClientResponse name(String name) {
     this.name = name;
     return this;
   }
@@ -87,7 +87,7 @@ public class ClientResponse   {
     this.name = name;
   }
 
-  public ClientResponse lastName(String lastName) {
+  public ProductClientResponse lastName(String lastName) {
     this.lastName = lastName;
     return this;
   }
@@ -107,7 +107,7 @@ public class ClientResponse   {
     this.lastName = lastName;
   }
 
-  public ClientResponse phoneNumber(String phoneNumber) {
+  public ProductClientResponse phoneNumber(String phoneNumber) {
     this.phoneNumber = phoneNumber;
     return this;
   }
@@ -127,7 +127,7 @@ public class ClientResponse   {
     this.phoneNumber = phoneNumber;
   }
 
-  public ClientResponse isBlocked(Boolean isBlocked) {
+  public ProductClientResponse isBlocked(Boolean isBlocked) {
     this.isBlocked = isBlocked;
     return this;
   }
@@ -156,13 +156,13 @@ public class ClientResponse   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ClientResponse clientResponse = (ClientResponse) o;
-    return Objects.equals(this.id, clientResponse.id) &&
-        Objects.equals(this.surname, clientResponse.surname) &&
-        Objects.equals(this.name, clientResponse.name) &&
-        Objects.equals(this.lastName, clientResponse.lastName) &&
-        Objects.equals(this.phoneNumber, clientResponse.phoneNumber) &&
-        Objects.equals(this.isBlocked, clientResponse.isBlocked);
+    ProductClientResponse productClientResponse = (ProductClientResponse) o;
+    return Objects.equals(this.id, productClientResponse.id) &&
+        Objects.equals(this.surname, productClientResponse.surname) &&
+        Objects.equals(this.name, productClientResponse.name) &&
+        Objects.equals(this.lastName, productClientResponse.lastName) &&
+        Objects.equals(this.phoneNumber, productClientResponse.phoneNumber) &&
+        Objects.equals(this.isBlocked, productClientResponse.isBlocked);
   }
 
   @Override
@@ -173,7 +173,7 @@ public class ClientResponse   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ClientResponse {\n");
+    sb.append("class ProductClientResponse {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    surname: ").append(toIndentedString(surname)).append("\n");

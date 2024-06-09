@@ -2,18 +2,15 @@ package kz.diploma.adapter.access.model;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonCreator;
-import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.util.Date;
 import javax.validation.Valid;
-import javax.validation.constraints.*;
 
 /**
- * ProductResponse
+ * ClientProductResponse
  */
 
-public class ProductResponse   {
+public class ClientProductResponse   {
   @JsonProperty("id")
   private Integer id;
 
@@ -44,10 +41,13 @@ public class ProductResponse   {
   @JsonProperty("isBlocked")
   private Boolean isBlocked;
 
+  @JsonProperty("expiredDate")
+  private Date expiredDate;
+
   @JsonProperty("accountResponse")
   private AccountResponse accountResponse = null;
 
-  public ProductResponse id(Integer id) {
+  public ClientProductResponse id(Integer id) {
     this.id = id;
     return this;
   }
@@ -67,7 +67,7 @@ public class ProductResponse   {
     this.id = id;
   }
 
-  public ProductResponse createdAt(Date createdAt) {
+  public ClientProductResponse createdAt(Date createdAt) {
     this.createdAt = createdAt;
     return this;
   }
@@ -88,7 +88,7 @@ public class ProductResponse   {
     this.createdAt = createdAt;
   }
 
-  public ProductResponse pan(String pan) {
+  public ClientProductResponse pan(String pan) {
     this.pan = pan;
     return this;
   }
@@ -108,7 +108,7 @@ public class ProductResponse   {
     this.pan = pan;
   }
 
-  public ProductResponse pin(String pin) {
+  public ClientProductResponse pin(String pin) {
     this.pin = pin;
     return this;
   }
@@ -128,7 +128,7 @@ public class ProductResponse   {
     this.pin = pin;
   }
 
-  public ProductResponse cvv(String cvv) {
+  public ClientProductResponse cvv(String cvv) {
     this.cvv = cvv;
     return this;
   }
@@ -148,7 +148,7 @@ public class ProductResponse   {
     this.cvv = cvv;
   }
 
-  public ProductResponse rbs(String rbs) {
+  public ClientProductResponse rbs(String rbs) {
     this.rbs = rbs;
     return this;
   }
@@ -168,7 +168,7 @@ public class ProductResponse   {
     this.rbs = rbs;
   }
 
-  public ProductResponse active(Boolean active) {
+  public ClientProductResponse active(Boolean active) {
     this.active = active;
     return this;
   }
@@ -188,7 +188,7 @@ public class ProductResponse   {
     this.active = active;
   }
 
-  public ProductResponse inAccess(Boolean inAccess) {
+  public ClientProductResponse inAccess(Boolean inAccess) {
     this.inAccess = inAccess;
     return this;
   }
@@ -208,7 +208,7 @@ public class ProductResponse   {
     this.inAccess = inAccess;
   }
 
-  public ProductResponse outAccess(Boolean outAccess) {
+  public ClientProductResponse outAccess(Boolean outAccess) {
     this.outAccess = outAccess;
     return this;
   }
@@ -228,7 +228,7 @@ public class ProductResponse   {
     this.outAccess = outAccess;
   }
 
-  public ProductResponse isBlocked(Boolean isBlocked) {
+  public ClientProductResponse isBlocked(Boolean isBlocked) {
     this.isBlocked = isBlocked;
     return this;
   }
@@ -248,7 +248,28 @@ public class ProductResponse   {
     this.isBlocked = isBlocked;
   }
 
-  public ProductResponse accountResponse(AccountResponse accountResponse) {
+  public ClientProductResponse expiredDate(Date expiredDate) {
+    this.expiredDate = expiredDate;
+    return this;
+  }
+
+  /**
+   * Get expiredDate
+   * @return expiredDate
+  */
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  public Date getExpiredDate() {
+    return expiredDate;
+  }
+
+  public void setExpiredDate(Date expiredDate) {
+    this.expiredDate = expiredDate;
+  }
+
+  public ClientProductResponse accountResponse(AccountResponse accountResponse) {
     this.accountResponse = accountResponse;
     return this;
   }
@@ -278,29 +299,30 @@ public class ProductResponse   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ProductResponse productResponse = (ProductResponse) o;
-    return Objects.equals(this.id, productResponse.id) &&
-        Objects.equals(this.createdAt, productResponse.createdAt) &&
-        Objects.equals(this.pan, productResponse.pan) &&
-        Objects.equals(this.pin, productResponse.pin) &&
-        Objects.equals(this.cvv, productResponse.cvv) &&
-        Objects.equals(this.rbs, productResponse.rbs) &&
-        Objects.equals(this.active, productResponse.active) &&
-        Objects.equals(this.inAccess, productResponse.inAccess) &&
-        Objects.equals(this.outAccess, productResponse.outAccess) &&
-        Objects.equals(this.isBlocked, productResponse.isBlocked) &&
-        Objects.equals(this.accountResponse, productResponse.accountResponse);
+    ClientProductResponse clientProductResponse = (ClientProductResponse) o;
+    return Objects.equals(this.id, clientProductResponse.id) &&
+        Objects.equals(this.createdAt, clientProductResponse.createdAt) &&
+        Objects.equals(this.pan, clientProductResponse.pan) &&
+        Objects.equals(this.pin, clientProductResponse.pin) &&
+        Objects.equals(this.cvv, clientProductResponse.cvv) &&
+        Objects.equals(this.rbs, clientProductResponse.rbs) &&
+        Objects.equals(this.active, clientProductResponse.active) &&
+        Objects.equals(this.inAccess, clientProductResponse.inAccess) &&
+        Objects.equals(this.outAccess, clientProductResponse.outAccess) &&
+        Objects.equals(this.isBlocked, clientProductResponse.isBlocked) &&
+        Objects.equals(this.expiredDate, clientProductResponse.expiredDate) &&
+        Objects.equals(this.accountResponse, clientProductResponse.accountResponse);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, createdAt, pan, pin, cvv, rbs, active, inAccess, outAccess, isBlocked, accountResponse);
+    return Objects.hash(id, createdAt, pan, pin, cvv, rbs, active, inAccess, outAccess, isBlocked, expiredDate, accountResponse);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ProductResponse {\n");
+    sb.append("class ClientProductResponse {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    createdAt: ").append(toIndentedString(createdAt)).append("\n");
@@ -312,6 +334,7 @@ public class ProductResponse   {
     sb.append("    inAccess: ").append(toIndentedString(inAccess)).append("\n");
     sb.append("    outAccess: ").append(toIndentedString(outAccess)).append("\n");
     sb.append("    isBlocked: ").append(toIndentedString(isBlocked)).append("\n");
+    sb.append("    expiredDate: ").append(toIndentedString(expiredDate)).append("\n");
     sb.append("    accountResponse: ").append(toIndentedString(accountResponse)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -3,12 +3,15 @@ package kz.diploma.adapter.access.model;
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
+import java.util.ArrayList;
+import java.util.List;
+import javax.validation.Valid;
 
 /**
- * ClientResponse
+ * ClientClientResponse
  */
 
-public class ClientResponse   {
+public class ClientClientResponse   {
   @JsonProperty("id")
   private Integer id;
 
@@ -27,7 +30,11 @@ public class ClientResponse   {
   @JsonProperty("isBlocked")
   private Boolean isBlocked;
 
-  public ClientResponse id(Integer id) {
+  @JsonProperty("products")
+  @Valid
+  private List<ClientProductResponse> products = null;
+
+  public ClientClientResponse id(Integer id) {
     this.id = id;
     return this;
   }
@@ -47,7 +54,7 @@ public class ClientResponse   {
     this.id = id;
   }
 
-  public ClientResponse surname(String surname) {
+  public ClientClientResponse surname(String surname) {
     this.surname = surname;
     return this;
   }
@@ -67,7 +74,7 @@ public class ClientResponse   {
     this.surname = surname;
   }
 
-  public ClientResponse name(String name) {
+  public ClientClientResponse name(String name) {
     this.name = name;
     return this;
   }
@@ -87,7 +94,7 @@ public class ClientResponse   {
     this.name = name;
   }
 
-  public ClientResponse lastName(String lastName) {
+  public ClientClientResponse lastName(String lastName) {
     this.lastName = lastName;
     return this;
   }
@@ -107,7 +114,7 @@ public class ClientResponse   {
     this.lastName = lastName;
   }
 
-  public ClientResponse phoneNumber(String phoneNumber) {
+  public ClientClientResponse phoneNumber(String phoneNumber) {
     this.phoneNumber = phoneNumber;
     return this;
   }
@@ -127,7 +134,7 @@ public class ClientResponse   {
     this.phoneNumber = phoneNumber;
   }
 
-  public ClientResponse isBlocked(Boolean isBlocked) {
+  public ClientClientResponse isBlocked(Boolean isBlocked) {
     this.isBlocked = isBlocked;
     return this;
   }
@@ -147,6 +154,35 @@ public class ClientResponse   {
     this.isBlocked = isBlocked;
   }
 
+  public ClientClientResponse products(List<ClientProductResponse> products) {
+    this.products = products;
+    return this;
+  }
+
+  public ClientClientResponse addProductsItem(ClientProductResponse productsItem) {
+    if (this.products == null) {
+      this.products = new ArrayList<ClientProductResponse>();
+    }
+    this.products.add(productsItem);
+    return this;
+  }
+
+  /**
+   * Get products
+   * @return products
+  */
+  @ApiModelProperty(value = "")
+
+  @Valid
+
+  public List<ClientProductResponse> getProducts() {
+    return products;
+  }
+
+  public void setProducts(List<ClientProductResponse> products) {
+    this.products = products;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -156,24 +192,25 @@ public class ClientResponse   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ClientResponse clientResponse = (ClientResponse) o;
-    return Objects.equals(this.id, clientResponse.id) &&
-        Objects.equals(this.surname, clientResponse.surname) &&
-        Objects.equals(this.name, clientResponse.name) &&
-        Objects.equals(this.lastName, clientResponse.lastName) &&
-        Objects.equals(this.phoneNumber, clientResponse.phoneNumber) &&
-        Objects.equals(this.isBlocked, clientResponse.isBlocked);
+    ClientClientResponse clientClientResponse = (ClientClientResponse) o;
+    return Objects.equals(this.id, clientClientResponse.id) &&
+        Objects.equals(this.surname, clientClientResponse.surname) &&
+        Objects.equals(this.name, clientClientResponse.name) &&
+        Objects.equals(this.lastName, clientClientResponse.lastName) &&
+        Objects.equals(this.phoneNumber, clientClientResponse.phoneNumber) &&
+        Objects.equals(this.isBlocked, clientClientResponse.isBlocked) &&
+        Objects.equals(this.products, clientClientResponse.products);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, surname, name, lastName, phoneNumber, isBlocked);
+    return Objects.hash(id, surname, name, lastName, phoneNumber, isBlocked, products);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ClientResponse {\n");
+    sb.append("class ClientClientResponse {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    surname: ").append(toIndentedString(surname)).append("\n");
@@ -181,6 +218,7 @@ public class ClientResponse   {
     sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
     sb.append("    phoneNumber: ").append(toIndentedString(phoneNumber)).append("\n");
     sb.append("    isBlocked: ").append(toIndentedString(isBlocked)).append("\n");
+    sb.append("    products: ").append(toIndentedString(products)).append("\n");
     sb.append("}");
     return sb.toString();
   }

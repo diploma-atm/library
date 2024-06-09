@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;
 
 /**
- * ClientResponse
+ * AdminResponse
  */
 
-public class ClientResponse   {
+public class AdminResponse   {
   @JsonProperty("id")
   private Integer id;
 
@@ -18,16 +18,19 @@ public class ClientResponse   {
   @JsonProperty("name")
   private String name;
 
-  @JsonProperty("lastName")
-  private String lastName;
+  @JsonProperty("lastname")
+  private String lastname;
 
   @JsonProperty("phoneNumber")
   private String phoneNumber;
 
-  @JsonProperty("isBlocked")
-  private Boolean isBlocked;
+  @JsonProperty("post")
+  private String post;
 
-  public ClientResponse id(Integer id) {
+  @JsonProperty("registration")
+  private String registration;
+
+  public AdminResponse id(Integer id) {
     this.id = id;
     return this;
   }
@@ -47,7 +50,7 @@ public class ClientResponse   {
     this.id = id;
   }
 
-  public ClientResponse surname(String surname) {
+  public AdminResponse surname(String surname) {
     this.surname = surname;
     return this;
   }
@@ -67,7 +70,7 @@ public class ClientResponse   {
     this.surname = surname;
   }
 
-  public ClientResponse name(String name) {
+  public AdminResponse name(String name) {
     this.name = name;
     return this;
   }
@@ -87,27 +90,27 @@ public class ClientResponse   {
     this.name = name;
   }
 
-  public ClientResponse lastName(String lastName) {
-    this.lastName = lastName;
+  public AdminResponse lastname(String lastname) {
+    this.lastname = lastname;
     return this;
   }
 
   /**
-   * Get lastName
-   * @return lastName
+   * Get lastname
+   * @return lastname
   */
   @ApiModelProperty(value = "")
 
 
-  public String getLastName() {
-    return lastName;
+  public String getLastname() {
+    return lastname;
   }
 
-  public void setLastName(String lastName) {
-    this.lastName = lastName;
+  public void setLastname(String lastname) {
+    this.lastname = lastname;
   }
 
-  public ClientResponse phoneNumber(String phoneNumber) {
+  public AdminResponse phoneNumber(String phoneNumber) {
     this.phoneNumber = phoneNumber;
     return this;
   }
@@ -127,24 +130,44 @@ public class ClientResponse   {
     this.phoneNumber = phoneNumber;
   }
 
-  public ClientResponse isBlocked(Boolean isBlocked) {
-    this.isBlocked = isBlocked;
+  public AdminResponse post(String post) {
+    this.post = post;
     return this;
   }
 
   /**
-   * Get isBlocked
-   * @return isBlocked
+   * Get post
+   * @return post
   */
   @ApiModelProperty(value = "")
 
 
-  public Boolean getIsBlocked() {
-    return isBlocked;
+  public String getPost() {
+    return post;
   }
 
-  public void setIsBlocked(Boolean isBlocked) {
-    this.isBlocked = isBlocked;
+  public void setPost(String post) {
+    this.post = post;
+  }
+
+  public AdminResponse registration(String registration) {
+    this.registration = registration;
+    return this;
+  }
+
+  /**
+   * Get registration
+   * @return registration
+  */
+  @ApiModelProperty(value = "")
+
+
+  public String getRegistration() {
+    return registration;
+  }
+
+  public void setRegistration(String registration) {
+    this.registration = registration;
   }
 
 
@@ -156,31 +179,33 @@ public class ClientResponse   {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ClientResponse clientResponse = (ClientResponse) o;
-    return Objects.equals(this.id, clientResponse.id) &&
-        Objects.equals(this.surname, clientResponse.surname) &&
-        Objects.equals(this.name, clientResponse.name) &&
-        Objects.equals(this.lastName, clientResponse.lastName) &&
-        Objects.equals(this.phoneNumber, clientResponse.phoneNumber) &&
-        Objects.equals(this.isBlocked, clientResponse.isBlocked);
+    AdminResponse adminResponse = (AdminResponse) o;
+    return Objects.equals(this.id, adminResponse.id) &&
+        Objects.equals(this.surname, adminResponse.surname) &&
+        Objects.equals(this.name, adminResponse.name) &&
+        Objects.equals(this.lastname, adminResponse.lastname) &&
+        Objects.equals(this.phoneNumber, adminResponse.phoneNumber) &&
+        Objects.equals(this.post, adminResponse.post) &&
+        Objects.equals(this.registration, adminResponse.registration);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, surname, name, lastName, phoneNumber, isBlocked);
+    return Objects.hash(id, surname, name, lastname, phoneNumber, post, registration);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ClientResponse {\n");
+    sb.append("class AdminResponse {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    surname: ").append(toIndentedString(surname)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
+    sb.append("    lastname: ").append(toIndentedString(lastname)).append("\n");
     sb.append("    phoneNumber: ").append(toIndentedString(phoneNumber)).append("\n");
-    sb.append("    isBlocked: ").append(toIndentedString(isBlocked)).append("\n");
+    sb.append("    post: ").append(toIndentedString(post)).append("\n");
+    sb.append("    registration: ").append(toIndentedString(registration)).append("\n");
     sb.append("}");
     return sb.toString();
   }

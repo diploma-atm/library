@@ -28,6 +28,9 @@ public class RolesDefinitionStep extends AuthBaseChainStep {
 
     private boolean checkRolesAllowed(HandlerMethod method, Roles role) {
         RolesAllowed annotation = getRolesAllowed(method);
+        if(role == null){
+            return false;
+        }
         if (annotation == null)
             return true;
 
