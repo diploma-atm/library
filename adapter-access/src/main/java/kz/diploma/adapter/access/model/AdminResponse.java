@@ -30,6 +30,9 @@ public class AdminResponse   {
   @JsonProperty("registration")
   private String registration;
 
+  @JsonProperty("password")
+  private String password;
+
   public AdminResponse id(Integer id) {
     this.id = id;
     return this;
@@ -170,6 +173,26 @@ public class AdminResponse   {
     this.registration = registration;
   }
 
+  public AdminResponse password(String password) {
+    this.password = password;
+    return this;
+  }
+
+  /**
+   * Get password
+   * @return password
+  */
+  @ApiModelProperty(value = "")
+
+
+  public String getPassword() {
+    return password;
+  }
+
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -186,12 +209,13 @@ public class AdminResponse   {
         Objects.equals(this.lastname, adminResponse.lastname) &&
         Objects.equals(this.phoneNumber, adminResponse.phoneNumber) &&
         Objects.equals(this.post, adminResponse.post) &&
-        Objects.equals(this.registration, adminResponse.registration);
+        Objects.equals(this.registration, adminResponse.registration) &&
+        Objects.equals(this.password, adminResponse.password);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, surname, name, lastname, phoneNumber, post, registration);
+    return Objects.hash(id, surname, name, lastname, phoneNumber, post, registration, password);
   }
 
   @Override
@@ -206,6 +230,7 @@ public class AdminResponse   {
     sb.append("    phoneNumber: ").append(toIndentedString(phoneNumber)).append("\n");
     sb.append("    post: ").append(toIndentedString(post)).append("\n");
     sb.append("    registration: ").append(toIndentedString(registration)).append("\n");
+    sb.append("    password: ").append(toIndentedString(password)).append("\n");
     sb.append("}");
     return sb.toString();
   }

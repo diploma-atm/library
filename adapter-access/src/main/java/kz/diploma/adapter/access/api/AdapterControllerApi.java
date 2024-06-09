@@ -34,6 +34,15 @@ public interface AdapterControllerApi {
     ResponseEntity<AdminResponse> getAdminById(@ApiParam(value = "",required=true) @PathVariable("id") Integer id);
 
 
+    @ApiOperation(value = "", nickname = "getAdminByPhoneNumber", notes = "", response = AdminResponse.class, tags={ "adapter-controller", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = AdminResponse.class) })
+    @RequestMapping(value = "/adapter/admin/phone-number",
+        produces = "*/*", 
+        method = RequestMethod.GET)
+    ResponseEntity<AdminResponse> getAdminByPhoneNumber(@NotNull @ApiParam(value = "", required = true) @Valid @RequestParam(value = "phoneNumber", required = true) String phoneNumber);
+
+
     @ApiOperation(value = "", nickname = "getAllAdmins", notes = "", response = AdminResponse.class, responseContainer = "List", tags={ "adapter-controller", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = AdminResponse.class, responseContainer = "List") })
