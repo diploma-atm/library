@@ -142,6 +142,20 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/ClientClientResponse'
+  /adapter/all/clients:
+    get:
+      tags:
+      - adapter-controller
+      operationId: getAllClientsResponse
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ClientClientResponse'
   /adapter/admin:
     get:
       tags:

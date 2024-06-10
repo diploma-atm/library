@@ -61,6 +61,15 @@ public interface AdapterControllerApi {
     ResponseEntity<List<ClientResponse>> getAllClients();
 
 
+    @ApiOperation(value = "", nickname = "getAllClientsResponse", notes = "", response = ClientClientResponse.class, responseContainer = "List", tags={ "adapter-controller", })
+    @ApiResponses(value = { 
+        @ApiResponse(code = 200, message = "OK", response = ClientClientResponse.class, responseContainer = "List") })
+    @RequestMapping(value = "/adapter/all/clients",
+        produces = "*/*", 
+        method = RequestMethod.GET)
+    ResponseEntity<List<ClientClientResponse>> getAllClientsResponse();
+
+
     @ApiOperation(value = "", nickname = "getClient", notes = "", response = ClientClientResponse.class, tags={ "adapter-controller", })
     @ApiResponses(value = { 
         @ApiResponse(code = 200, message = "OK", response = ClientClientResponse.class) })

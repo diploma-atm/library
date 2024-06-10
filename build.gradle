@@ -19,10 +19,10 @@ allprojects {
         modelVersion            = '3.0.0'
         errorHandlingVersion    = '3.0.0'
         yandexVersion           = '3.0.0'
-        adapterVersion          = '3.0.2'
+        adapterVersion          = '3.0.3'
         securityVersion         = '3.0.0'
 
-        bomVersion              = '3.0.2'
+        bomVersion              = '3.0.3'
     }
 
     repositories {
